@@ -1,0 +1,17 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka-server
+eureka:
+  client:
+    # 是否设置单机模式
+    register-with-eureka: false
+    # 设置是否进行注册
+    fetch-registry: false
+    # 设置注册地址 http://ip:port/eureka
+    # ip 表示服务注册与发现中心的ip
+    # port 表示服务注册与发现中心的port
+    # eureka 部分是固定的
+    service-url:
+      defaultzone: http://localhost:8761/eureka

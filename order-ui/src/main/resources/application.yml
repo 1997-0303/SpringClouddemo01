@@ -1,0 +1,29 @@
+server:
+  port: 9101
+spring:
+  application:
+    name: order-ui
+eureka:
+  client:
+    service-url:
+      defaultzone: http://localhost:8761/eureka
+      #熔断器可以进行服务降级，和服务熔断。要进行不同的配置
+feign:
+  hystrix:
+    enabled: true
+    #不配置的话，默认超时和连接的时间为1秒。
+hystrix:
+  command:
+    default:
+      execution:
+        thread:
+          #超时时间，与ribbon的降级服务一样，只不过这里手动设置
+          timeoutInMilliseconds: 1000
+
+          #ribbon优先级比上面高，
+ribbon:
+  #连接时间
+  ConnectTimeout: 4000
+  #读的时间
+  ReadTimeout: 2000
+  #根据上面计算它的超时时间。（貌似是。）
